@@ -1,0 +1,16 @@
+PODS:
+  - PlanetaryMaps (1.0.0)
+
+DEPENDENCIES:
+  - PlanetaryMaps (from `../../`)
+
+EXTERNAL SOURCES:
+  PlanetaryMaps:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  PlanetaryMaps: c1873747e31f8b72fde379a8f9707e61843ec938
+
+PODFILE CHECKSUM: 96c4bc085d50166c951722ea0198fe7712ee7ebb
+
+COCOAPODS: 1.0.1
