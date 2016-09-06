@@ -1,0 +1,167 @@
+{
+"Anchorage":{    
+    "left_top":3155,"top_left":98,
+    "right_top":12037,"top_right":98,
+    "right_bottom":12058,"bottom_right":5904,
+    "left_bottom":3159,"bottom_left":5904},
+"Fairbanks":{
+    "left_top":3103,"top_left":59,
+    "right_top":11176,"top_right":59,
+    "right_bottom":11173,"bottom_right":5761,
+    "left_bottom":3103,"bottom_left":5761},
+"Atlanta":{
+    "left_top":1548,"top_left":557,
+    "right_top":8965,"top_right":557,
+    "right_bottom":8965,"bottom_right":7514,
+    "left_bottom":1548,"bottom_left":7514},
+"Baltimore-Washington":{
+    "left_top":1613,"top_left":186,
+    "right_top":12020,"top_right":186,
+    "right_bottom":12020,"bottom_right":8595,
+    "left_bottom":1613,"bottom_left":8595},
+"Boston":{
+    "left_top":1615,"top_left":317,
+    "right_top":10520,"top_right":317,
+    "right_bottom":10520,"bottom_right":8769,
+    "left_bottom":1615,"bottom_left":8769},
+"Charlotte":{
+    "left_top":1559,"top_left":520,
+    "right_top":8961,"top_right":519,
+    "right_bottom":8963,"bottom_right":7381,
+    "left_bottom":1563,"bottom_left":7381},
+"Chicago":{
+    "left_top":1547,"top_left":537,
+    "right_top":7441,"top_right":537,
+    "right_bottom":7441,"bottom_right":5920,
+    "left_bottom":1547,"bottom_left":5920},
+"Cincinnati":{
+    "left_top":1551,"top_left":318,
+    "right_top":8961,"top_right":287,
+    "right_bottom":8950,"bottom_right":8632,
+    "left_bottom":1547,"bottom_left":8629},
+"Cleveland":{
+    "left_top":1671,"top_left":566,
+    "right_top":7576,"top_right":566,
+    "right_bottom":7576,"bottom_right":5954,
+    "left_bottom":1671,"bottom_left":5954},
+"Dallas-Ft Worth":{
+    "left_top":1608,"top_left":128,
+    "right_top":11882,"top_right":128,
+    "right_bottom":11882,"bottom_right":8953,
+    "left_bottom":1608,"bottom_left":8953},
+"Colorado Springs":{
+    "left_top":3190,"top_left":58,
+    "right_top":11428,"top_right":59,
+    "right_bottom":11513,"bottom_right":7702,
+    "left_bottom":3105,"bottom_left":7702},
+"Denver":{
+    "left_top":1545,"top_left":320,
+    "right_top":8950,"top_right":320,
+    "right_bottom":8950,"bottom_right":7212,
+    "left_bottom":1545,"bottom_left":7212},
+"Detroit":{
+    "left_top":3068,"top_left":78,
+    "right_top":8969,"top_right":78,
+    "right_bottom":8969,"bottom_right":6001,
+    "left_bottom":3068,"bottom_left":6001},
+"Houston":{
+    "left_top":1538,"top_left":498,
+    "right_top":8976,"top_right":498,
+    "right_bottom":8976,"bottom_right":7962,
+    "left_bottom":1538,"bottom_left":7962},
+"Kansas City":{
+    "left_top":1556,"top_left":729,
+    "right_top":8952,"top_right":729,
+    "right_bottom":8952,"bottom_right":7302,
+    "left_bottom":1556,"bottom_left":7302},
+"Las Vegas":{
+    "left_top":3100,"top_left":597,
+    "right_top":10476,"top_right":597,
+    "right_bottom":10476,"bottom_right":5983,
+    "left_bottom":3100,"bottom_left":5983},
+"Los Angeles":{
+    "left_top":4673,"top_left":107,
+    "right_top":14875,"top_right":107,
+    "right_bottom":9112,"bottom_right":5887,
+    "left_bottom":4673,"bottom_left":5887},
+"Memphis":{
+    "left_top":1674,"top_left":557,
+    "right_top":9112,"top_right":557,
+    "right_bottom":9112,"bottom_right":7375,
+    "left_bottom":1674,"bottom_left":7375},
+"Miami":{
+    "left_top":1576,"top_left":73,
+    "right_top":10463,"top_right":73,
+    "right_bottom":10463,"bottom_right":8853,
+    "left_bottom":1576,"bottom_left":8853},
+"Minneapolis-St Paul":{
+    "left_top":1603,"top_left":558,
+    "right_top":7490,"top_right":558,
+    "right_bottom":7490,"bottom_right":5937,
+    "left_bottom":1603,"bottom_left":5937},
+"New Orleans":{
+    "left_top":1543,"top_left":521,
+    "right_top":8955,"top_right":521,
+    "right_bottom":8955,"bottom_right":5909,
+    "left_bottom":1543,"bottom_left":5909},
+"New York":{
+    "left_top":3062,"top_left":568,
+    "right_top":11965,"top_right":568,
+    "right_bottom":11965,"bottom_right":6023,
+    "left_bottom":3062,"bottom_left":6023},
+"Philadelphia":{
+    "left_top":1736,"top_left":640,
+    "right_top":7638,"top_right":633,
+    "right_bottom":7638,"bottom_right":6490,
+    "left_bottom":1733,"bottom_left":6498},
+"Phoenix":{
+    "left_top":3056,"top_left":586,
+    "right_top":10460,"top_right":586,
+    "right_bottom":10460,"bottom_right":7393,
+    "left_bottom":3056,"bottom_left":7393},
+"Pittsburgh":{
+    "left_top":1621,"top_left":549,
+    "right_top":7515,"top_right":549,
+    "right_bottom":7515,"bottom_right":5932,
+    "left_bottom":1621,"bottom_left":5932},
+"Puerto Rico-VI":{
+    "left_top":1491,"top_left":53,
+    "right_top":17768,"top_right":320,
+    "right_bottom":17768,"bottom_right":6024,
+    "left_bottom":1491,"bottom_left":6024},
+"Salt Lake City":{
+    "left_top":1595,"top_left":699,
+    "right_top":8999,"top_right":699,
+    "right_bottom":8999,"bottom_right":7452,
+    "left_bottom":1595,"bottom_left":7452},
+"San Diego":{
+    "left_top":4627,"top_left":179,
+    "right_top":12038,"top_right":174,
+    "right_bottom":12042,"bottom_right":5991,
+    "left_bottom":4627,"bottom_left":5991},
+"San Francisco":{
+    "left_top":3070,"top_left":363,
+    "right_top":10443,"top_right":363,
+    "right_bottom":10443,"bottom_right":6516,
+    "left_bottom":3070,"bottom_left":6516},
+"Seattle":{
+    "left_top":1676,"top_left":548,
+    "right_top":7589,"top_right":548,
+    "right_bottom":7589,"bottom_right":7466,
+    "left_bottom":1676,"bottom_left":7472},
+"St Louis":{
+    "left_top":1562,"top_left":560,
+    "right_top":7460,"top_right":557,
+    "right_bottom":8950,"bottom_right":5951,
+    "left_bottom":1556,"bottom_left":5959},
+"Orlando":{
+    "left_top":3010,"top_left":444,
+    "right_top":11756,"top_right":444,
+    "right_bottom":11756,"bottom_right":7610,
+    "left_bottom":3010,"bottom_left":7610},
+"Tampa":{
+    "left_top":1532,"top_left":486,
+    "right_top":7449,"top_right":486,
+    "right_bottom":7449,"bottom_right":7383,
+    "left_bottom":1532,"bottom_left":7383}
+}

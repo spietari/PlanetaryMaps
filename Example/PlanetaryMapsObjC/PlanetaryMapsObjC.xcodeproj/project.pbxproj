@@ -1,0 +1,401 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D07A58A1D270692000E673A /* aeroplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D07A5891D270692000E673A /* aeroplane.png */; };
+		3D66CD601D2405D60028EBDC /* PMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D66CD5D1D2405D60028EBDC /* PMViewController.m */; };
+		3DB6A48B1D24054C008759E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6A48A1D24054C008759E8 /* main.m */; };
+		3DB6A48E1D24054C008759E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB6A48D1D24054C008759E8 /* AppDelegate.m */; };
+		3DB6A4941D24054C008759E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6A4921D24054C008759E8 /* Main.storyboard */; };
+		3DB6A4961D24054C008759E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6A4951D24054C008759E8 /* Assets.xcassets */; };
+		3DB6A4991D24054C008759E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DB6A4971D24054C008759E8 /* LaunchScreen.storyboard */; };
+		594FC88929906773AB2DE5EC /* Pods_PlanetaryMapsObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A04F02DD56AF85D2B6247CA /* Pods_PlanetaryMapsObjC.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2A04F02DD56AF85D2B6247CA /* Pods_PlanetaryMapsObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanetaryMapsObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D07A5891D270692000E673A /* aeroplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aeroplane.png; sourceTree = "<group>"; };
+		3D66CD5C1D2405D60028EBDC /* PMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMViewController.h; sourceTree = "<group>"; };
+		3D66CD5D1D2405D60028EBDC /* PMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMViewController.m; sourceTree = "<group>"; };
+		3DB6A4861D24054C008759E8 /* PlanetaryMapsObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanetaryMapsObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DB6A48A1D24054C008759E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3DB6A48C1D24054C008759E8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3DB6A48D1D24054C008759E8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3DB6A4931D24054C008759E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DB6A4951D24054C008759E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3DB6A4981D24054C008759E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3DB6A49A1D24054C008759E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E58B2361AB34A0793F39CF9D /* Pods-PlanetaryMapsObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanetaryMapsObjC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanetaryMapsObjC/Pods-PlanetaryMapsObjC.debug.xcconfig"; sourceTree = "<group>"; };
+		FD0FDAE024E5A025A4DFE328 /* Pods-PlanetaryMapsObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanetaryMapsObjC.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanetaryMapsObjC/Pods-PlanetaryMapsObjC.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DB6A4831D24054C008759E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				594FC88929906773AB2DE5EC /* Pods_PlanetaryMapsObjC.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DB6A47D1D24054C008759E8 = {
+			isa = PBXGroup;
+			children = (
+				3DB6A4881D24054C008759E8 /* PlanetaryMapsObjC */,
+				3DB6A4871D24054C008759E8 /* Products */,
+				91ACF037A38BB7BFEDEABF84 /* Pods */,
+				4BEA80F66F791EE268305805 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3DB6A4871D24054C008759E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DB6A4861D24054C008759E8 /* PlanetaryMapsObjC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DB6A4881D24054C008759E8 /* PlanetaryMapsObjC */ = {
+			isa = PBXGroup;
+			children = (
+				3D07A5891D270692000E673A /* aeroplane.png */,
+				3D66CD5C1D2405D60028EBDC /* PMViewController.h */,
+				3D66CD5D1D2405D60028EBDC /* PMViewController.m */,
+				3DB6A48C1D24054C008759E8 /* AppDelegate.h */,
+				3DB6A48D1D24054C008759E8 /* AppDelegate.m */,
+				3DB6A4921D24054C008759E8 /* Main.storyboard */,
+				3DB6A4951D24054C008759E8 /* Assets.xcassets */,
+				3DB6A4971D24054C008759E8 /* LaunchScreen.storyboard */,
+				3DB6A49A1D24054C008759E8 /* Info.plist */,
+				3DB6A4891D24054C008759E8 /* Supporting Files */,
+			);
+			path = PlanetaryMapsObjC;
+			sourceTree = "<group>";
+		};
+		3DB6A4891D24054C008759E8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DB6A48A1D24054C008759E8 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4BEA80F66F791EE268305805 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A04F02DD56AF85D2B6247CA /* Pods_PlanetaryMapsObjC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		91ACF037A38BB7BFEDEABF84 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E58B2361AB34A0793F39CF9D /* Pods-PlanetaryMapsObjC.debug.xcconfig */,
+				FD0FDAE024E5A025A4DFE328 /* Pods-PlanetaryMapsObjC.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DB6A4851D24054C008759E8 /* PlanetaryMapsObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DB6A49D1D24054C008759E8 /* Build configuration list for PBXNativeTarget "PlanetaryMapsObjC" */;
+			buildPhases = (
+				2ADB3FD13D9EE2B64D7D1DFC /* [CP] Check Pods Manifest.lock */,
+				3DB6A4821D24054C008759E8 /* Sources */,
+				3DB6A4831D24054C008759E8 /* Frameworks */,
+				3DB6A4841D24054C008759E8 /* Resources */,
+				7C3D70F1702FB1E110752F46 /* [CP] Embed Pods Frameworks */,
+				6F53429B8FD7320B33BD8060 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlanetaryMapsObjC;
+			productName = PlanetaryMapsObjC;
+			productReference = 3DB6A4861D24054C008759E8 /* PlanetaryMapsObjC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3DB6A47E1D24054C008759E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "United Galactic";
+				TargetAttributes = {
+					3DB6A4851D24054C008759E8 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 3DB6A4811D24054C008759E8 /* Build configuration list for PBXProject "PlanetaryMapsObjC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3DB6A47D1D24054C008759E8;
+			productRefGroup = 3DB6A4871D24054C008759E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3DB6A4851D24054C008759E8 /* PlanetaryMapsObjC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DB6A4841D24054C008759E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DB6A4991D24054C008759E8 /* LaunchScreen.storyboard in Resources */,
+				3DB6A4961D24054C008759E8 /* Assets.xcassets in Resources */,
+				3DB6A4941D24054C008759E8 /* Main.storyboard in Resources */,
+				3D07A58A1D270692000E673A /* aeroplane.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2ADB3FD13D9EE2B64D7D1DFC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6F53429B8FD7320B33BD8060 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlanetaryMapsObjC/Pods-PlanetaryMapsObjC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C3D70F1702FB1E110752F46 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlanetaryMapsObjC/Pods-PlanetaryMapsObjC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DB6A4821D24054C008759E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DB6A48E1D24054C008759E8 /* AppDelegate.m in Sources */,
+				3DB6A48B1D24054C008759E8 /* main.m in Sources */,
+				3D66CD601D2405D60028EBDC /* PMViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3DB6A4921D24054C008759E8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DB6A4931D24054C008759E8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3DB6A4971D24054C008759E8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DB6A4981D24054C008759E8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3DB6A49B1D24054C008759E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3DB6A49C1D24054C008759E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3DB6A49E1D24054C008759E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E58B2361AB34A0793F39CF9D /* Pods-PlanetaryMapsObjC.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PlanetaryMapsObjC",
+				);
+				INFOPLIST_FILE = PlanetaryMapsObjC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.unitedgalactic.PlanetaryMapsObjC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3DB6A49F1D24054C008759E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD0FDAE024E5A025A4DFE328 /* Pods-PlanetaryMapsObjC.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PlanetaryMapsObjC",
+				);
+				INFOPLIST_FILE = PlanetaryMapsObjC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.unitedgalactic.PlanetaryMapsObjC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3DB6A4811D24054C008759E8 /* Build configuration list for PBXProject "PlanetaryMapsObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DB6A49B1D24054C008759E8 /* Debug */,
+				3DB6A49C1D24054C008759E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DB6A49D1D24054C008759E8 /* Build configuration list for PBXNativeTarget "PlanetaryMapsObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DB6A49E1D24054C008759E8 /* Debug */,
+				3DB6A49F1D24054C008759E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3DB6A47E1D24054C008759E8 /* Project object */;
+}

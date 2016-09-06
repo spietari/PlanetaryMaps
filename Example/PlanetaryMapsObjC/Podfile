@@ -1,0 +1,7 @@
+use_frameworks!
+
+target 'PlanetaryMapsObjC' do
+  pod 'PlanetaryMaps', :path => '../../'
+  pod 'YYImage'
+  pod 'YYImage/WebP'
+end
