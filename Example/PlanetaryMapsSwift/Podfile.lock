@@ -1,5 +1,5 @@
 PODS:
-  - PlanetaryMaps (1.0.0)
+  - PlanetaryMaps (1.0.1)
 
 DEPENDENCIES:
   - PlanetaryMaps (from `../../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  PlanetaryMaps: c1873747e31f8b72fde379a8f9707e61843ec938
+  PlanetaryMaps: 37a712c31d44ad422a473df8a9af35034fba10f4
 
 PODFILE CHECKSUM: 96c4bc085d50166c951722ea0198fe7712ee7ebb
 
