@@ -247,9 +247,9 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
         __block UIImage *image;
-        if ([self.tileDataSource respondsToSelector:@selector(planetaryView:imageFromData:)])
+        if ([self.tileDataSource respondsToSelector:@selector(planetaryView:imageFromData:forTileLayer:)])
         {
-            image = [self.tileDataSource planetaryView:self.planetaryView imageFromData:data];
+            image = [self.tileDataSource planetaryView:self.planetaryView imageFromData:data forTileLayer:tile.layer];
         }
         else
         {

@@ -77,7 +77,7 @@
 @protocol PMTileDataSource <NSObject>
 -(NSURL*)planetaryView:(PMPlanetaryView*)view urlForTileLayer:(NSUInteger)layer withZoom:(NSUInteger)zoom atX:(NSUInteger)x andY:(NSUInteger)y;
 @optional
--(UIImage*)planetaryView:(PMPlanetaryView*)view imageFromData:(NSData*)data;
+-(UIImage*)planetaryView:(PMPlanetaryView*)view imageFromData:(NSData*)data forTileLayer:(NSUInteger)layer;
 -(NSUInteger)numberOfTileLayersInPlanetaryView:(PMPlanetaryView*)view;
 @end
 
