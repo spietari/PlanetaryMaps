@@ -40,6 +40,7 @@
     // Create shader program.
     *program = glCreateProgram();
     
+    //NSBundle* bundle = [NSBundle mainBundle];
     NSBundle* bundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:self.classForCoder] pathForResource:@"PlanetaryMaps" ofType:@"bundle"]];
     
     // Create and compile vertex shader.

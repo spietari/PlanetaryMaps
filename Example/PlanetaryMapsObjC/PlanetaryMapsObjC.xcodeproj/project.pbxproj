@@ -140,6 +140,7 @@
 				TargetAttributes = {
 					3DB6A4851D24054C008759E8 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2F6XEAMHP2;
 					};
 				};
 			};
@@ -345,6 +346,7 @@
 			baseConfigurationReference = E58B2361AB34A0793F39CF9D /* Pods-PlanetaryMapsObjC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2F6XEAMHP2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -362,6 +364,7 @@
 			baseConfigurationReference = FD0FDAE024E5A025A4DFE328 /* Pods-PlanetaryMapsObjC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2F6XEAMHP2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
