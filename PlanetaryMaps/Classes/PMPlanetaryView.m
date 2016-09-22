@@ -9,6 +9,7 @@
 #import "Program/PMDepthProgram.h"
 #import "Program/PMPlanetProgram.h"
 #import "Program/PMPlanetDimmerProgram.h"
+#import "Program/PMHUDProgram.h"
 
 #import <OpenGLES/ES2/glext.h>
 
@@ -31,6 +32,10 @@ GLfloat gPlaneVertexData[30] =
     GLKMatrix4 _modelViewProjectionMatrix;
     GLuint _vertexArray;
     GLuint _vertexBuffer;
+    
+    GLint animatedLinesTextureID;
+    GLubyte* animatedLinesTextureData;
+    CGContextRef animatedLinesContext;
 }
 
 @property (nonatomic, strong) CADisplayLink *link;
@@ -39,6 +44,8 @@ GLfloat gPlaneVertexData[30] =
 - (void)tearDownGL;
 
 @property (nonatomic, assign) CGPoint panVelocity;
+@property (nonatomic, assign) BOOL panSlowingDown;
+
 @property (nonatomic, assign) NSUInteger lastZoom;
 @property (nonatomic, assign) NSUInteger lastDoubleTileX;
 @property (nonatomic, assign) NSUInteger lastDoubleTileY;
@@ -58,9 +65,12 @@ GLfloat gPlaneVertexData[30] =
 @property (nonatomic, strong) NSMutableDictionary *markerSets;
 @property (nonatomic, strong) NSMutableDictionary *visibleMarkerSets;
 
+@property (nonatomic, strong) NSMutableArray<PMAnimatedLine*> *animatedLines;
+
 @property (nonatomic, strong) PMDepthProgram *depthProgram;
 @property (nonatomic, strong) PMPlanetProgram *planetProgram;
 @property (nonatomic, strong) PMPlanetDimmerProgram *planetDimmerProgram;
+@property (nonatomic, strong) PMHUDProgram *animatedLineProgram;
 
 @end
 
@@ -95,6 +105,9 @@ GLfloat gPlaneVertexData[30] =
         self.edgeDimIntensity = 0.75;
         self.lineSpacingInDegrees = 10;
         self.linesOnTop = NO;
+        
+        animatedLinesTextureData = nil;
+        animatedLinesTextureID = 0;
         
         [PMTileManager sharedManager].planetaryView = self;
         
@@ -150,6 +163,7 @@ GLfloat gPlaneVertexData[30] =
         [self setupGL];
         [self reloadPolygons];
         [self reloadMarkers];
+        [self reloadAnimatedLines];
         self.distance = _distance;
     }
     
@@ -184,6 +198,18 @@ GLfloat gPlaneVertexData[30] =
             }
         }
     }
+}
+
+-(void)setPanVelocity:(CGPoint)panVelocity
+{
+    if (self.panSlowingDown && panVelocity.x * panVelocity.x + panVelocity.y * panVelocity.y < 0.01)
+    {
+        _panVelocity = CGPointZero;
+        self.panSlowingDown = NO;
+        [self reloadAnimatedLines];
+        return;
+    }
+    _panVelocity = panVelocity;
 }
 
 -(void)setEye:(CLLocationCoordinate2D)eye
@@ -406,6 +432,7 @@ GLfloat gPlaneVertexData[30] =
     switch (pan.state)
     {
         case UIGestureRecognizerStateBegan:
+            self.animatedLines = nil;
             break;
             
         case UIGestureRecognizerStateChanged:
@@ -435,6 +462,7 @@ GLfloat gPlaneVertexData[30] =
         case UIGestureRecognizerStateEnded:
         {
             CGPoint velocity = [pan velocityInView:self];
+            self.panSlowingDown = YES;
             self.panVelocity = CGPointMake(self.distance * velocity.y / 300, -self.distance * velocity.x / 300);
             break;
         }
@@ -473,6 +501,8 @@ GLfloat gPlaneVertexData[30] =
             
             self.panVelocity = CGPointZero;
             self.blockTileUpdate = NO;
+            [self reloadAnimatedLines];
+            
             break;
             
         default:
@@ -495,6 +525,7 @@ GLfloat gPlaneVertexData[30] =
     self.depthProgram = [[PMDepthProgram alloc]initWithName:@"DepthShader"];
     self.planetProgram  = [[PMPlanetProgram alloc]initWithName:@"PlanetShader"];
     self.planetDimmerProgram  = [[PMPlanetDimmerProgram alloc]initWithName:@"PlanetDimmerShader"];
+    self.animatedLineProgram = [[PMHUDProgram alloc]initWithName:@"HUDShader"];
     
     glGenVertexArraysOES(1, &_vertexArray);
     glBindVertexArrayOES(_vertexArray);
@@ -518,6 +549,11 @@ GLfloat gPlaneVertexData[30] =
     
     glDeleteBuffers(1, &_vertexBuffer);
     glDeleteVertexArraysOES(1, &_vertexArray);
+    
+    free(animatedLinesTextureData);
+    glDeleteTextures(1, &animatedLinesTextureID);
+    
+    CGContextRelease(animatedLinesContext);
 }
 
 -(void)drawRect:(CGRect)rect
@@ -560,6 +596,9 @@ GLfloat gPlaneVertexData[30] =
     {
         [self renderPlanet];
     }
+
+    [self renderAnimatedLines];
+    
     [self renderPlanetDimmer];
 
     glEnable(GL_BLEND);
@@ -1152,6 +1191,147 @@ GLfloat gPlaneVertexData[30] =
         }
     }
     return NO;
+}
+
+-(void)reloadAnimatedLines
+{
+    if (!self.initialized || !self.animatedLinesDataSource) return;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if ([self.animatedLinesDataSource respondsToSelector:@selector(numberOfAnimatedLinesInPlanetaryView:)] &&
+            [self.animatedLinesDataSource respondsToSelector:@selector(animatedLineImageForPlanetaryView:)])
+        {
+            NSInteger count = [self.animatedLinesDataSource numberOfAnimatedLinesInPlanetaryView: self];
+            if (count == 0)
+            {
+                self.animatedLines = nil;
+                return;
+            }
+        
+            UIImage* dataImage = [self.animatedLinesDataSource animatedLineImageForPlanetaryView:self];
+            
+            NSInteger dataWidth = dataImage.size.width;
+            NSInteger dataHeight = dataImage.size.height;
+            
+            UIGraphicsBeginImageContext(dataImage.size);
+            CGContextRef context = UIGraphicsGetCurrentContext();
+
+            CGContextScaleCTM(context, 1, -1);
+            CGContextTranslateCTM(context, 0, -dataImage.size.height);
+            CGContextDrawImage(context, CGRectMake(0, 0, dataWidth, dataHeight), dataImage.CGImage);
+            
+            UInt8* data = (UInt8*)CGBitmapContextGetData(context);
+            
+            self.animatedLines = [[NSMutableArray alloc]init];
+            for (NSInteger i = 0; i < count; i++)
+            {
+                
+                CGPoint point = CGPointMake(arc4random() % (NSInteger)self.bounds.size.width, arc4random() % (NSInteger)self.bounds.size.height);
+                BOOL error;
+                CLLocationCoordinate2D coordinate = [self coordinateForScreenPoint:point error:&error];
+                if (error)
+                {
+                    continue;
+                }
+                
+                NSMutableArray* points = [[NSMutableArray alloc]init];
+                CGFloat speed, heading;
+                for (NSInteger j = 0; j < 100; j++)
+                {
+                    [points addObject:[NSValue valueWithCGPoint:point]];
+                    
+                    NSInteger x = dataWidth  * (coordinate.longitude + 180) / 360;
+                    NSInteger y = dataHeight * (1 - (coordinate.latitude + 90) / 180);
+                    
+                    CGFloat u = data[4 * (y * dataWidth + x) + 1] - 127;
+                    CGFloat v = data[4 * (y * dataWidth + x) + 2] - 127;
+                    
+                    speed = sqrtf(u * u + v * v);
+                    heading = atan2(v, u);
+                    
+                    coordinate = [PMCartography locationAtDistance:speed * 1000 * sqrt(self.distance) fromOrigin:coordinate toBearing:heading];
+                    BOOL behind;
+                    point = [self screenPointForCoordinate:coordinate behind:&behind];
+                    if (behind)
+                    {
+                        break;
+                    }
+                }
+                
+                [points addObject:[NSValue valueWithCGPoint:point]];
+                
+                PMAnimatedLine* animatedLine = [[PMAnimatedLine alloc]initWithScreenPoints:points];
+                [self.animatedLines addObject:animatedLine];
+                
+            }
+            
+            UIGraphicsEndImageContext();
+            
+            if (animatedLinesTextureData == nil)
+            {
+                animatedLinesTextureData = malloc(self.bounds.size.width * self.bounds.size.height * 4);
+                
+                glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+                glGenTextures(1, (GLuint*)&animatedLinesTextureID);
+                
+                glBindTexture(GL_TEXTURE_2D, animatedLinesTextureID);
+                glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+                glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+                
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, self.bounds.size.width, self.bounds.size.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, animatedLinesTextureData);
+                
+                CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+                NSUInteger bytesPerPixel = 4;
+                NSUInteger bytesPerRow = bytesPerPixel * self.bounds.size.width;
+                NSUInteger bitsPerComponent = 8;
+                animatedLinesContext = CGBitmapContextCreate(animatedLinesTextureData, self.bounds.size.width, self.bounds.size.height,
+                                                             bitsPerComponent, bytesPerRow, colorSpace,
+                                                             kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+                
+                CGColorSpaceRelease(colorSpace);
+            }
+        }
+    });
+}
+
+-(void)renderAnimatedLines
+{
+    if (!self.animatedLines) return;
+    
+    static NSInteger frame = 0;
+    
+    CGContextSetBlendMode(animatedLinesContext, kCGBlendModeDestinationOut);
+    CGContextSetFillColorWithColor(animatedLinesContext, [[UIColor whiteColor] colorWithAlphaComponent:0.02].CGColor);
+    CGContextFillRect(animatedLinesContext, CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height));
+    
+    CGContextSetBlendMode(animatedLinesContext, kCGBlendModeNormal);
+    
+    for (PMAnimatedLine* animatedLine in self.animatedLines)
+    {
+        [animatedLine renderFrame:frame toContext:animatedLinesContext withScreenSize:self.bounds.size];
+    }
+    frame++;
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, animatedLinesTextureID);
+    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, self.bounds.size.width, self.bounds.size.height, GL_RGBA, GL_UNSIGNED_BYTE, animatedLinesTextureData);
+    
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_GREATER);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    CGFloat aspect = self.bounds.size.width / self.bounds.size.height;
+    
+    GLKMatrix4 modelViewProjectionMatrix = GLKMatrix4MakeOrtho(-0.5, 0.5, -0.5, 0.5, 1000, -1000);
+    
+    self.animatedLineProgram.modelViewMatrix.value = modelViewProjectionMatrix;
+    
+    [self.animatedLineProgram use];
+    glBindVertexArrayOES(_vertexArray);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    
 }
 
 @end

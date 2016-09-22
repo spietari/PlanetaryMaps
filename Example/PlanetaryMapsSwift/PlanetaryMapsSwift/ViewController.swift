@@ -12,7 +12,7 @@ import CoreLocation
 import PlanetaryMaps
 import YYImage
 
-class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMarkerDataSource, PMMarkerDelegate, PMPolygonDataSource, PMPolygonDelegate, PMPlanetaryViewDelegate {
+class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMarkerDataSource, PMMarkerDelegate, PMPolygonDataSource, PMPolygonDelegate, PMPlanetaryViewDelegate, PMAnimatedLinesDataSource, PMAnimatedLinesDelegate {
 
     // This is to fool Xcode to display FPS debug gauge.
     private var context: EAGLContext?
@@ -39,6 +39,9 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
         
         planetaryView.polygonDataSource = self
         planetaryView.polygonDelegate = self
+        
+        planetaryView.animatedLinesDataSource = self
+        planetaryView.animatedLinesDelegate = self
         
         planetaryView.planetaryViewDelegate = self
         
@@ -209,5 +212,16 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
         }
     }
     
+    // MARK: Animated Lines Data Source
+    
+    func numberOfAnimatedLines(in view: PMPlanetaryView!) -> Int {
+        return 5000
+    }
+    
+    func animatedLineImage(for view: PMPlanetaryView!) -> UIImage! {
+        return UIImage(named: "wind.jpg")
+    }
+    
+    // MARK: Animated Lines Delegate
 }
 

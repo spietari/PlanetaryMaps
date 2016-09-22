@@ -8,6 +8,7 @@
 #import "PMPolygon.h"
 #import "PMMarker.h"
 #import "PMScreenMarker.h"
+#import "PMAnimatedLine.h"
 
 @protocol PMPlanetaryViewDelegate;
 @protocol PMTileDataSource;
@@ -16,6 +17,8 @@
 @protocol PMPolygonDelegate;
 @protocol PMMarkerDataSource;
 @protocol PMMarkerDelegate;
+@protocol PMAnimatedLinesDataSource;
+@protocol PMAnimatedLinesDelegate;
 
 @interface PMPlanetaryView : GLKView
 
@@ -29,6 +32,9 @@
 
 @property (nonatomic, weak) id<PMMarkerDataSource> markerDataSource;
 @property (nonatomic, weak) id<PMMarkerDelegate> markerDelegate;
+
+@property (nonatomic, weak) id<PMAnimatedLinesDataSource> animatedLinesDataSource;
+@property (nonatomic, weak) id<PMAnimatedLinesDelegate> animatedLinesDelegate;
 
 @property (nonatomic, assign) CLLocationCoordinate2D eye;
 @property (nonatomic, assign) CGFloat distance;
@@ -121,4 +127,13 @@
 -(BOOL)planetaryView:(PMPlanetaryView*)view useScreenSpaceForMarkersInSet:(NSInteger)set;
 -(CGSize)planetaryView:(PMPlanetaryView*)view sizeForMarkersInSet:(NSInteger)set;
 -(void)planetaryView:(PMPlanetaryView*)view didTapMarkersAtIndices:(NSArray*)indices inSets:(NSArray*)sets;
+@end
+
+@protocol PMAnimatedLinesDataSource <NSObject>
+-(NSInteger)numberOfAnimatedLinesInPlanetaryView:(PMPlanetaryView*)view;
+-(UIImage*)animatedLineImageForPlanetaryView:(PMPlanetaryView*)view;
+@end
+
+@protocol PMAnimatedLinesDelegate <NSObject>
+
 @end
