@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 
 import PlanetaryMaps
+import YYImage
 
 class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMarkerDataSource, PMMarkerDelegate, PMPolygonDataSource, PMPolygonDelegate, PMPlanetaryViewDelegate {
 
@@ -24,6 +25,8 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
     let apollo15 = CLLocation(latitude: 26.13224, longitude:   3.63400)
     let apollo16 = CLLocation(latitude: -8.97341, longitude:  15.49859)
     let apollo17 = CLLocation(latitude: 20.18809, longitude:  30.77475)
+    
+    private let weatherLayer = WindLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +50,31 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
         super.didReceiveMemoryWarning()
         planetaryView.didReceiveMemoryWarning()
     }
-
+    
     // MARK: Tile Data Source
     
+    func numberOfTileLayers(in view: PMPlanetaryView!) -> UInt {
+        return 2
+    }
+    
     public func planetaryView(_ view: PMPlanetaryView!, urlForTileLayer layer: UInt, withZoom zoom: UInt, atX x: UInt, andY y: UInt) -> URL! {
-        return URL(string: "https://dl.dropboxusercontent.com/u/6367136/charts/Moon/Tiles/\(zoom)/\(x)/\(y).png")
+        if layer == 0 {
+            return URL(string: "https://dl.dropboxusercontent.com/u/6367136/charts/sec/\(zoom)/\(x)/\(y).webp")
+        }
+        if zoom == 1 {
+            return weatherLayer.url(withZoom: zoom, atX: x, andY: y)
+        } else {
+            return nil
+        }
+    }
+    
+    func planetaryView(_ view: PMPlanetaryView!, imageFrom data: Data!, forTileLayer layer: UInt) -> UIImage! {
+        
+        if layer == 0 {
+            return YYImage(data: data)
+        } else {
+            return weatherLayer.imageFromData(data: data)
+        }
     }
     
     // MARK: Tile Delegate
@@ -62,8 +85,8 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
     
     // MARK: Marker Data Source
     
-    func numberOfMarkerSetsInPlanetaryView(view: PMPlanetaryView!) -> Int {
-        return 2
+    func numberOfMarkerSets(in: PMPlanetaryView!) -> Int {
+        return 0//2
     }
     
     func planetaryView(_ view: PMPlanetaryView, numberOfMarkersInSet set: Int) -> Int {
@@ -132,7 +155,7 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
     // MARK: Polygon Data Source
     
     func numberOfPolygonSets(in: PMPlanetaryView!) -> Int {
-        return 2
+        return 0//2
     }
     
     func planetaryView(_ view: PMPlanetaryView, numberOfPolygonsInSet set: Int) -> Int {

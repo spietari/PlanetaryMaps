@@ -12,6 +12,9 @@
 		3DB7244C1D6996F600BB055A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DB7244A1D6996F600BB055A /* Main.storyboard */; };
 		3DB7244E1D6996F600BB055A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB7244D1D6996F600BB055A /* Assets.xcassets */; };
 		3DB724511D6996F600BB055A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DB7244F1D6996F600BB055A /* LaunchScreen.storyboard */; };
+		3DF627801D93E23E001EE535 /* TemperatureLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF6277F1D93E23E001EE535 /* TemperatureLayer.swift */; };
+		3DF627821D93E34E001EE535 /* WeatherLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF627811D93E34E001EE535 /* WeatherLayer.swift */; };
+		3DF627841D93F576001EE535 /* WindLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF627831D93F576001EE535 /* WindLayer.swift */; };
 		D2A5D273D83B50A6E57A99C1 /* Pods_PlanetaryMapsSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED62E949D0506901F51A71C /* Pods_PlanetaryMapsSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +26,9 @@
 		3DB7244D1D6996F600BB055A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DB724501D6996F600BB055A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DB724521D6996F600BB055A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DF6277F1D93E23E001EE535 /* TemperatureLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureLayer.swift; sourceTree = "<group>"; };
+		3DF627811D93E34E001EE535 /* WeatherLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherLayer.swift; sourceTree = "<group>"; };
+		3DF627831D93F576001EE535 /* WindLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindLayer.swift; sourceTree = "<group>"; };
 		7ED62E949D0506901F51A71C /* Pods_PlanetaryMapsSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlanetaryMapsSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A01BD231FED1600F345261 /* Pods-PlanetaryMapsSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanetaryMapsSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlanetaryMapsSwift/Pods-PlanetaryMapsSwift.release.xcconfig"; sourceTree = "<group>"; };
 		D5EB86AA4D2C517EDBC13957 /* Pods-PlanetaryMapsSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlanetaryMapsSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlanetaryMapsSwift/Pods-PlanetaryMapsSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +81,9 @@
 				3DB7244D1D6996F600BB055A /* Assets.xcassets */,
 				3DB7244F1D6996F600BB055A /* LaunchScreen.storyboard */,
 				3DB724521D6996F600BB055A /* Info.plist */,
+				3DF6277F1D93E23E001EE535 /* TemperatureLayer.swift */,
+				3DF627811D93E34E001EE535 /* WeatherLayer.swift */,
+				3DF627831D93F576001EE535 /* WindLayer.swift */,
 			);
 			path = PlanetaryMapsSwift;
 			sourceTree = "<group>";
@@ -213,7 +222,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB724491D6996F600BB055A /* ViewController.swift in Sources */,
+				3DF627841D93F576001EE535 /* WindLayer.swift in Sources */,
 				3DB724471D6996F600BB055A /* AppDelegate.swift in Sources */,
+				3DF627821D93E34E001EE535 /* WeatherLayer.swift in Sources */,
+				3DF627801D93E23E001EE535 /* TemperatureLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

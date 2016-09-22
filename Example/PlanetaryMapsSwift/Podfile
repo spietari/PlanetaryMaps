@@ -1,5 +1,7 @@
 use_frameworks!
 
 target 'PlanetaryMapsSwift' do
-  pod 'PlanetaryMaps', :path => '../../'  
+  pod 'PlanetaryMaps', :path => '../../'
+  pod 'YYImage'
+  pod 'YYImage/WebP'
 end

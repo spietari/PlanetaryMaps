@@ -1,8 +1,15 @@
 PODS:
   - PlanetaryMaps (1.0.1)
+  - YYImage (1.0.4):
+    - YYImage/Core (= 1.0.4)
+  - YYImage/Core (1.0.4)
+  - YYImage/WebP (1.0.4):
+    - YYImage/Core
 
 DEPENDENCIES:
   - PlanetaryMaps (from `../../`)
+  - YYImage
+  - YYImage/WebP
 
 EXTERNAL SOURCES:
   PlanetaryMaps:
@@ -10,7 +17,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   PlanetaryMaps: 37a712c31d44ad422a473df8a9af35034fba10f4
+  YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
 
-PODFILE CHECKSUM: 96c4bc085d50166c951722ea0198fe7712ee7ebb
+PODFILE CHECKSUM: e10326b84044e443fcf0aadadb79c926043e1004
 
 COCOAPODS: 1.0.1
