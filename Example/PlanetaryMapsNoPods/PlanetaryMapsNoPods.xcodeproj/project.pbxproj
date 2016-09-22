@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DC719BC1D872F9A0078CACB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC719BB1D872F9A0078CACB /* main.m */; };
+		3DC719C71D872F9B0078CACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719C61D872F9B0078CACB /* Assets.xcassets */; };
+		3DC719CA1D872F9B0078CACB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719C81D872F9B0078CACB /* LaunchScreen.storyboard */; };
+		3DC719DE1D8730300078CACB /* aeroplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719D91D8730300078CACB /* aeroplane.png */; };
+		3DC719DF1D8730300078CACB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC719DB1D8730300078CACB /* AppDelegate.m */; };
+		3DC719E01D8730300078CACB /* PMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC719DD1D8730300078CACB /* PMViewController.m */; };
+		3DC71A161D8730520078CACB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719E31D8730520078CACB /* .gitkeep */; };
+		3DC71A171D8730520078CACB /* DepthShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719E51D8730520078CACB /* DepthShader.fsh */; };
+		3DC71A181D8730520078CACB /* DepthShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719E61D8730520078CACB /* DepthShader.vsh */; };
+		3DC71A191D8730520078CACB /* MarkerShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719E71D8730520078CACB /* MarkerShader.fsh */; };
+		3DC71A1A1D8730520078CACB /* MarkerShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719E81D8730520078CACB /* MarkerShader.vsh */; };
+		3DC71A1B1D8730520078CACB /* PlanetDimmerShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719E91D8730520078CACB /* PlanetDimmerShader.fsh */; };
+		3DC71A1C1D8730520078CACB /* PlanetDimmerShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719EA1D8730520078CACB /* PlanetDimmerShader.vsh */; };
+		3DC71A1D1D8730520078CACB /* PlanetShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719EB1D8730520078CACB /* PlanetShader.fsh */; };
+		3DC71A1E1D8730520078CACB /* PlanetShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719EC1D8730520078CACB /* PlanetShader.vsh */; };
+		3DC71A1F1D8730520078CACB /* PolygonShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719ED1D8730520078CACB /* PolygonShader.fsh */; };
+		3DC71A201D8730520078CACB /* PolygonShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719EE1D8730520078CACB /* PolygonShader.vsh */; };
+		3DC71A211D8730520078CACB /* ScreenMarkerShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719EF1D8730520078CACB /* ScreenMarkerShader.fsh */; };
+		3DC71A221D8730520078CACB /* ScreenMarkerShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719F01D8730520078CACB /* ScreenMarkerShader.vsh */; };
+		3DC71A231D8730520078CACB /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 3DC719F21D8730520078CACB /* .gitkeep */; };
+		3DC71A241D8730520078CACB /* PMCartography.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC719F41D8730520078CACB /* PMCartography.m */; };
+		3DC71A251D8730520078CACB /* PMMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC719F61D8730520078CACB /* PMMarker.m */; };
+		3DC71A261D8730520078CACB /* PMPlanetaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC719F81D8730520078CACB /* PMPlanetaryView.m */; };
+		3DC71A271D8730520078CACB /* PMPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC719FA1D8730520078CACB /* PMPolygon.m */; };
+		3DC71A281D8730520078CACB /* PMScreenMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC719FC1D8730520078CACB /* PMScreenMarker.m */; };
+		3DC71A291D8730520078CACB /* PMTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC719FE1D8730520078CACB /* PMTile.m */; };
+		3DC71A2A1D8730520078CACB /* PMTileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A001D8730520078CACB /* PMTileManager.m */; };
+		3DC71A2B1D8730520078CACB /* PMTileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A021D8730520078CACB /* PMTileTools.m */; };
+		3DC71A2C1D8730520078CACB /* PMDepthProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A051D8730520078CACB /* PMDepthProgram.m */; };
+		3DC71A2D1D8730520078CACB /* PMMarkerProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A071D8730520078CACB /* PMMarkerProgram.m */; };
+		3DC71A2E1D8730520078CACB /* PMPlanetaryViewProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A091D8730520078CACB /* PMPlanetaryViewProgram.m */; };
+		3DC71A2F1D8730520078CACB /* PMPlanetDimmerProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A0B1D8730520078CACB /* PMPlanetDimmerProgram.m */; };
+		3DC71A301D8730520078CACB /* PMPlanetProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A0D1D8730520078CACB /* PMPlanetProgram.m */; };
+		3DC71A311D8730520078CACB /* PMPolygonProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A0F1D8730520078CACB /* PMPolygonProgram.m */; };
+		3DC71A321D8730520078CACB /* PMProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A111D8730520078CACB /* PMProgram.m */; };
+		3DC71A331D8730520078CACB /* PMQuadProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A131D8730520078CACB /* PMQuadProgram.m */; };
+		3DC71A341D8730520078CACB /* PMUniform.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A151D8730520078CACB /* PMUniform.m */; };
+		3DC71A371D8730C50078CACB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC71A351D8730C50078CACB /* Main.storyboard */; };
+		3DC71A431D87316A0078CACB /* YYAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A3A1D87316A0078CACB /* YYAnimatedImageView.m */; };
+		3DC71A441D87316A0078CACB /* YYFrameImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A3C1D87316A0078CACB /* YYFrameImage.m */; };
+		3DC71A451D87316A0078CACB /* YYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A3E1D87316A0078CACB /* YYImage.m */; };
+		3DC71A461D87316A0078CACB /* YYImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A401D87316A0078CACB /* YYImageCoder.m */; };
+		3DC71A471D87316A0078CACB /* YYSpriteSheetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC71A421D87316A0078CACB /* YYSpriteSheetImage.m */; };
+		3DC71A491D8731BF0078CACB /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC71A481D8731BF0078CACB /* WebP.framework */; };
+		3DC71A4B1D8731DB0078CACB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC71A4A1D8731DB0078CACB /* QuartzCore.framework */; };
+		3DC71A4D1D8731EB0078CACB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC71A4C1D8731EB0078CACB /* AssetsLibrary.framework */; };
+		3DC71A4F1D8731EF0078CACB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC71A4E1D8731EF0078CACB /* ImageIO.framework */; };
+		3DC71A511D8731F80078CACB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC71A501D8731F80078CACB /* Accelerate.framework */; };
+		3DC71A531D8731FF0078CACB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC71A521D8731FF0078CACB /* MobileCoreServices.framework */; };
+		3DC71A551D8732070078CACB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC71A541D8732070078CACB /* libz.tbd */; };
+		3DC71A571D8733040078CACB /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC71A561D8733040078CACB /* GLKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3DC719B71D872F9A0078CACB /* PlanetaryMapsNoPods.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanetaryMapsNoPods.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DC719BB1D872F9A0078CACB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3DC719C61D872F9B0078CACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3DC719C91D872F9B0078CACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3DC719CB1D872F9B0078CACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DC719D91D8730300078CACB /* aeroplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aeroplane.png; sourceTree = "<group>"; };
+		3DC719DA1D8730300078CACB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3DC719DB1D8730300078CACB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3DC719DC1D8730300078CACB /* PMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMViewController.h; sourceTree = "<group>"; };
+		3DC719DD1D8730300078CACB /* PMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMViewController.m; sourceTree = "<group>"; };
+		3DC719E31D8730520078CACB /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		3DC719E51D8730520078CACB /* DepthShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DepthShader.fsh; sourceTree = "<group>"; };
+		3DC719E61D8730520078CACB /* DepthShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DepthShader.vsh; sourceTree = "<group>"; };
+		3DC719E71D8730520078CACB /* MarkerShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MarkerShader.fsh; sourceTree = "<group>"; };
+		3DC719E81D8730520078CACB /* MarkerShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MarkerShader.vsh; sourceTree = "<group>"; };
+		3DC719E91D8730520078CACB /* PlanetDimmerShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PlanetDimmerShader.fsh; sourceTree = "<group>"; };
+		3DC719EA1D8730520078CACB /* PlanetDimmerShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PlanetDimmerShader.vsh; sourceTree = "<group>"; };
+		3DC719EB1D8730520078CACB /* PlanetShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PlanetShader.fsh; sourceTree = "<group>"; };
+		3DC719EC1D8730520078CACB /* PlanetShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PlanetShader.vsh; sourceTree = "<group>"; };
+		3DC719ED1D8730520078CACB /* PolygonShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PolygonShader.fsh; sourceTree = "<group>"; };
+		3DC719EE1D8730520078CACB /* PolygonShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PolygonShader.vsh; sourceTree = "<group>"; };
+		3DC719EF1D8730520078CACB /* ScreenMarkerShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScreenMarkerShader.fsh; sourceTree = "<group>"; };
+		3DC719F01D8730520078CACB /* ScreenMarkerShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ScreenMarkerShader.vsh; sourceTree = "<group>"; };
+		3DC719F21D8730520078CACB /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		3DC719F31D8730520078CACB /* PMCartography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCartography.h; sourceTree = "<group>"; };
+		3DC719F41D8730520078CACB /* PMCartography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMCartography.m; sourceTree = "<group>"; };
+		3DC719F51D8730520078CACB /* PMMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMarker.h; sourceTree = "<group>"; };
+		3DC719F61D8730520078CACB /* PMMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMarker.m; sourceTree = "<group>"; };
+		3DC719F71D8730520078CACB /* PMPlanetaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlanetaryView.h; sourceTree = "<group>"; };
+		3DC719F81D8730520078CACB /* PMPlanetaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPlanetaryView.m; sourceTree = "<group>"; };
+		3DC719F91D8730520078CACB /* PMPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPolygon.h; sourceTree = "<group>"; };
+		3DC719FA1D8730520078CACB /* PMPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPolygon.m; sourceTree = "<group>"; };
+		3DC719FB1D8730520078CACB /* PMScreenMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMScreenMarker.h; sourceTree = "<group>"; };
+		3DC719FC1D8730520078CACB /* PMScreenMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMScreenMarker.m; sourceTree = "<group>"; };
+		3DC719FD1D8730520078CACB /* PMTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTile.h; sourceTree = "<group>"; };
+		3DC719FE1D8730520078CACB /* PMTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTile.m; sourceTree = "<group>"; };
+		3DC719FF1D8730520078CACB /* PMTileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTileManager.h; sourceTree = "<group>"; };
+		3DC71A001D8730520078CACB /* PMTileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTileManager.m; sourceTree = "<group>"; };
+		3DC71A011D8730520078CACB /* PMTileTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTileTools.h; sourceTree = "<group>"; };
+		3DC71A021D8730520078CACB /* PMTileTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTileTools.m; sourceTree = "<group>"; };
+		3DC71A041D8730520078CACB /* PMDepthProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMDepthProgram.h; sourceTree = "<group>"; };
+		3DC71A051D8730520078CACB /* PMDepthProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMDepthProgram.m; sourceTree = "<group>"; };
+		3DC71A061D8730520078CACB /* PMMarkerProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMarkerProgram.h; sourceTree = "<group>"; };
+		3DC71A071D8730520078CACB /* PMMarkerProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMarkerProgram.m; sourceTree = "<group>"; };
+		3DC71A081D8730520078CACB /* PMPlanetaryViewProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlanetaryViewProgram.h; sourceTree = "<group>"; };
+		3DC71A091D8730520078CACB /* PMPlanetaryViewProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPlanetaryViewProgram.m; sourceTree = "<group>"; };
+		3DC71A0A1D8730520078CACB /* PMPlanetDimmerProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlanetDimmerProgram.h; sourceTree = "<group>"; };
+		3DC71A0B1D8730520078CACB /* PMPlanetDimmerProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPlanetDimmerProgram.m; sourceTree = "<group>"; };
+		3DC71A0C1D8730520078CACB /* PMPlanetProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlanetProgram.h; sourceTree = "<group>"; };
+		3DC71A0D1D8730520078CACB /* PMPlanetProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPlanetProgram.m; sourceTree = "<group>"; };
+		3DC71A0E1D8730520078CACB /* PMPolygonProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPolygonProgram.h; sourceTree = "<group>"; };
+		3DC71A0F1D8730520078CACB /* PMPolygonProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPolygonProgram.m; sourceTree = "<group>"; };
+		3DC71A101D8730520078CACB /* PMProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMProgram.h; sourceTree = "<group>"; };
+		3DC71A111D8730520078CACB /* PMProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMProgram.m; sourceTree = "<group>"; };
+		3DC71A121D8730520078CACB /* PMQuadProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMQuadProgram.h; sourceTree = "<group>"; };
+		3DC71A131D8730520078CACB /* PMQuadProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMQuadProgram.m; sourceTree = "<group>"; };
+		3DC71A141D8730520078CACB /* PMUniform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUniform.h; sourceTree = "<group>"; };
+		3DC71A151D8730520078CACB /* PMUniform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUniform.m; sourceTree = "<group>"; };
+		3DC71A361D8730C50078CACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../PlanetaryMapsObjC/PlanetaryMapsObjC/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DC71A391D87316A0078CACB /* YYAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYAnimatedImageView.h; sourceTree = "<group>"; };
+		3DC71A3A1D87316A0078CACB /* YYAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYAnimatedImageView.m; sourceTree = "<group>"; };
+		3DC71A3B1D87316A0078CACB /* YYFrameImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFrameImage.h; sourceTree = "<group>"; };
+		3DC71A3C1D87316A0078CACB /* YYFrameImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFrameImage.m; sourceTree = "<group>"; };
+		3DC71A3D1D87316A0078CACB /* YYImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImage.h; sourceTree = "<group>"; };
+		3DC71A3E1D87316A0078CACB /* YYImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImage.m; sourceTree = "<group>"; };
+		3DC71A3F1D87316A0078CACB /* YYImageCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImageCoder.h; sourceTree = "<group>"; };
+		3DC71A401D87316A0078CACB /* YYImageCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImageCoder.m; sourceTree = "<group>"; };
+		3DC71A411D87316A0078CACB /* YYSpriteSheetImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYSpriteSheetImage.h; sourceTree = "<group>"; };
+		3DC71A421D87316A0078CACB /* YYSpriteSheetImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYSpriteSheetImage.m; sourceTree = "<group>"; };
+		3DC71A481D8731BF0078CACB /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebP.framework; path = Vendor/WebP.framework; sourceTree = "<group>"; };
+		3DC71A4A1D8731DB0078CACB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3DC71A4C1D8731EB0078CACB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		3DC71A4E1D8731EF0078CACB /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		3DC71A501D8731F80078CACB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		3DC71A521D8731FF0078CACB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		3DC71A541D8732070078CACB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		3DC71A561D8733040078CACB /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DC719B41D872F9A0078CACB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DC71A571D8733040078CACB /* GLKit.framework in Frameworks */,
+				3DC71A551D8732070078CACB /* libz.tbd in Frameworks */,
+				3DC71A531D8731FF0078CACB /* MobileCoreServices.framework in Frameworks */,
+				3DC71A511D8731F80078CACB /* Accelerate.framework in Frameworks */,
+				3DC71A4F1D8731EF0078CACB /* ImageIO.framework in Frameworks */,
+				3DC71A4D1D8731EB0078CACB /* AssetsLibrary.framework in Frameworks */,
+				3DC71A4B1D8731DB0078CACB /* QuartzCore.framework in Frameworks */,
+				3DC71A491D8731BF0078CACB /* WebP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DC719AE1D872F9A0078CACB = {
+			isa = PBXGroup;
+			children = (
+				3DC71A561D8733040078CACB /* GLKit.framework */,
+				3DC71A541D8732070078CACB /* libz.tbd */,
+				3DC71A521D8731FF0078CACB /* MobileCoreServices.framework */,
+				3DC71A501D8731F80078CACB /* Accelerate.framework */,
+				3DC71A4E1D8731EF0078CACB /* ImageIO.framework */,
+				3DC71A4C1D8731EB0078CACB /* AssetsLibrary.framework */,
+				3DC71A4A1D8731DB0078CACB /* QuartzCore.framework */,
+				3DC719B91D872F9A0078CACB /* PlanetaryMapsNoPods */,
+				3DC719B81D872F9A0078CACB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3DC719B81D872F9A0078CACB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DC719B71D872F9A0078CACB /* PlanetaryMapsNoPods.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DC719B91D872F9A0078CACB /* PlanetaryMapsNoPods */ = {
+			isa = PBXGroup;
+			children = (
+				3DC719E11D8730520078CACB /* PlanetaryMaps */,
+				3DC71A381D87316A0078CACB /* YYImage */,
+				3DC719D91D8730300078CACB /* aeroplane.png */,
+				3DC719DA1D8730300078CACB /* AppDelegate.h */,
+				3DC719DB1D8730300078CACB /* AppDelegate.m */,
+				3DC719DC1D8730300078CACB /* PMViewController.h */,
+				3DC719DD1D8730300078CACB /* PMViewController.m */,
+				3DC71A351D8730C50078CACB /* Main.storyboard */,
+				3DC719C61D872F9B0078CACB /* Assets.xcassets */,
+				3DC719C81D872F9B0078CACB /* LaunchScreen.storyboard */,
+				3DC719CB1D872F9B0078CACB /* Info.plist */,
+				3DC71A481D8731BF0078CACB /* WebP.framework */,
+				3DC719BA1D872F9A0078CACB /* Supporting Files */,
+			);
+			path = PlanetaryMapsNoPods;
+			sourceTree = "<group>";
+		};
+		3DC719BA1D872F9A0078CACB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DC719BB1D872F9A0078CACB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DC719E11D8730520078CACB /* PlanetaryMaps */ = {
+			isa = PBXGroup;
+			children = (
+				3DC719E21D8730520078CACB /* Assets */,
+				3DC719F11D8730520078CACB /* Classes */,
+			);
+			name = PlanetaryMaps;
+			path = ../../../PlanetaryMaps;
+			sourceTree = "<group>";
+		};
+		3DC719E21D8730520078CACB /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				3DC719E31D8730520078CACB /* .gitkeep */,
+				3DC719E41D8730520078CACB /* Shaders */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		3DC719E41D8730520078CACB /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				3DC719E51D8730520078CACB /* DepthShader.fsh */,
+				3DC719E61D8730520078CACB /* DepthShader.vsh */,
+				3DC719E71D8730520078CACB /* MarkerShader.fsh */,
+				3DC719E81D8730520078CACB /* MarkerShader.vsh */,
+				3DC719E91D8730520078CACB /* PlanetDimmerShader.fsh */,
+				3DC719EA1D8730520078CACB /* PlanetDimmerShader.vsh */,
+				3DC719EB1D8730520078CACB /* PlanetShader.fsh */,
+				3DC719EC1D8730520078CACB /* PlanetShader.vsh */,
+				3DC719ED1D8730520078CACB /* PolygonShader.fsh */,
+				3DC719EE1D8730520078CACB /* PolygonShader.vsh */,
+				3DC719EF1D8730520078CACB /* ScreenMarkerShader.fsh */,
+				3DC719F01D8730520078CACB /* ScreenMarkerShader.vsh */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		3DC719F11D8730520078CACB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3DC719F21D8730520078CACB /* .gitkeep */,
+				3DC719F31D8730520078CACB /* PMCartography.h */,
+				3DC719F41D8730520078CACB /* PMCartography.m */,
+				3DC719F51D8730520078CACB /* PMMarker.h */,
+				3DC719F61D8730520078CACB /* PMMarker.m */,
+				3DC719F71D8730520078CACB /* PMPlanetaryView.h */,
+				3DC719F81D8730520078CACB /* PMPlanetaryView.m */,
+				3DC719F91D8730520078CACB /* PMPolygon.h */,
+				3DC719FA1D8730520078CACB /* PMPolygon.m */,
+				3DC719FB1D8730520078CACB /* PMScreenMarker.h */,
+				3DC719FC1D8730520078CACB /* PMScreenMarker.m */,
+				3DC719FD1D8730520078CACB /* PMTile.h */,
+				3DC719FE1D8730520078CACB /* PMTile.m */,
+				3DC719FF1D8730520078CACB /* PMTileManager.h */,
+				3DC71A001D8730520078CACB /* PMTileManager.m */,
+				3DC71A011D8730520078CACB /* PMTileTools.h */,
+				3DC71A021D8730520078CACB /* PMTileTools.m */,
+				3DC71A031D8730520078CACB /* Program */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		3DC71A031D8730520078CACB /* Program */ = {
+			isa = PBXGroup;
+			children = (
+				3DC71A041D8730520078CACB /* PMDepthProgram.h */,
+				3DC71A051D8730520078CACB /* PMDepthProgram.m */,
+				3DC71A061D8730520078CACB /* PMMarkerProgram.h */,
+				3DC71A071D8730520078CACB /* PMMarkerProgram.m */,
+				3DC71A081D8730520078CACB /* PMPlanetaryViewProgram.h */,
+				3DC71A091D8730520078CACB /* PMPlanetaryViewProgram.m */,
+				3DC71A0A1D8730520078CACB /* PMPlanetDimmerProgram.h */,
+				3DC71A0B1D8730520078CACB /* PMPlanetDimmerProgram.m */,
+				3DC71A0C1D8730520078CACB /* PMPlanetProgram.h */,
+				3DC71A0D1D8730520078CACB /* PMPlanetProgram.m */,
+				3DC71A0E1D8730520078CACB /* PMPolygonProgram.h */,
+				3DC71A0F1D8730520078CACB /* PMPolygonProgram.m */,
+				3DC71A101D8730520078CACB /* PMProgram.h */,
+				3DC71A111D8730520078CACB /* PMProgram.m */,
+				3DC71A121D8730520078CACB /* PMQuadProgram.h */,
+				3DC71A131D8730520078CACB /* PMQuadProgram.m */,
+				3DC71A141D8730520078CACB /* PMUniform.h */,
+				3DC71A151D8730520078CACB /* PMUniform.m */,
+			);
+			path = Program;
+			sourceTree = "<group>";
+		};
+		3DC71A381D87316A0078CACB /* YYImage */ = {
+			isa = PBXGroup;
+			children = (
+				3DC71A391D87316A0078CACB /* YYAnimatedImageView.h */,
+				3DC71A3A1D87316A0078CACB /* YYAnimatedImageView.m */,
+				3DC71A3B1D87316A0078CACB /* YYFrameImage.h */,
+				3DC71A3C1D87316A0078CACB /* YYFrameImage.m */,
+				3DC71A3D1D87316A0078CACB /* YYImage.h */,
+				3DC71A3E1D87316A0078CACB /* YYImage.m */,
+				3DC71A3F1D87316A0078CACB /* YYImageCoder.h */,
+				3DC71A401D87316A0078CACB /* YYImageCoder.m */,
+				3DC71A411D87316A0078CACB /* YYSpriteSheetImage.h */,
+				3DC71A421D87316A0078CACB /* YYSpriteSheetImage.m */,
+			);
+			path = YYImage;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DC719B61D872F9A0078CACB /* PlanetaryMapsNoPods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DC719CE1D872F9B0078CACB /* Build configuration list for PBXNativeTarget "PlanetaryMapsNoPods" */;
+			buildPhases = (
+				3DC719B31D872F9A0078CACB /* Sources */,
+				3DC719B41D872F9A0078CACB /* Frameworks */,
+				3DC719B51D872F9A0078CACB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlanetaryMapsNoPods;
+			productName = PlanetaryMapsNoPods;
+			productReference = 3DC719B71D872F9A0078CACB /* PlanetaryMapsNoPods.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3DC719AF1D872F9A0078CACB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "United Galactic";
+				TargetAttributes = {
+					3DC719B61D872F9A0078CACB = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 3DC719B21D872F9A0078CACB /* Build configuration list for PBXProject "PlanetaryMapsNoPods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3DC719AE1D872F9A0078CACB;
+			productRefGroup = 3DC719B81D872F9A0078CACB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3DC719B61D872F9A0078CACB /* PlanetaryMapsNoPods */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DC719B51D872F9A0078CACB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DC71A191D8730520078CACB /* MarkerShader.fsh in Resources */,
+				3DC71A181D8730520078CACB /* DepthShader.vsh in Resources */,
+				3DC71A1C1D8730520078CACB /* PlanetDimmerShader.vsh in Resources */,
+				3DC71A231D8730520078CACB /* .gitkeep in Resources */,
+				3DC71A1F1D8730520078CACB /* PolygonShader.fsh in Resources */,
+				3DC71A221D8730520078CACB /* ScreenMarkerShader.vsh in Resources */,
+				3DC719CA1D872F9B0078CACB /* LaunchScreen.storyboard in Resources */,
+				3DC71A201D8730520078CACB /* PolygonShader.vsh in Resources */,
+				3DC719C71D872F9B0078CACB /* Assets.xcassets in Resources */,
+				3DC71A1B1D8730520078CACB /* PlanetDimmerShader.fsh in Resources */,
+				3DC71A1A1D8730520078CACB /* MarkerShader.vsh in Resources */,
+				3DC71A161D8730520078CACB /* .gitkeep in Resources */,
+				3DC719DE1D8730300078CACB /* aeroplane.png in Resources */,
+				3DC71A1E1D8730520078CACB /* PlanetShader.vsh in Resources */,
+				3DC71A171D8730520078CACB /* DepthShader.fsh in Resources */,
+				3DC71A371D8730C50078CACB /* Main.storyboard in Resources */,
+				3DC71A1D1D8730520078CACB /* PlanetShader.fsh in Resources */,
+				3DC71A211D8730520078CACB /* ScreenMarkerShader.fsh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DC719B31D872F9A0078CACB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DC71A271D8730520078CACB /* PMPolygon.m in Sources */,
+				3DC71A2C1D8730520078CACB /* PMDepthProgram.m in Sources */,
+				3DC71A261D8730520078CACB /* PMPlanetaryView.m in Sources */,
+				3DC71A461D87316A0078CACB /* YYImageCoder.m in Sources */,
+				3DC71A341D8730520078CACB /* PMUniform.m in Sources */,
+				3DC71A451D87316A0078CACB /* YYImage.m in Sources */,
+				3DC71A281D8730520078CACB /* PMScreenMarker.m in Sources */,
+				3DC71A2D1D8730520078CACB /* PMMarkerProgram.m in Sources */,
+				3DC71A301D8730520078CACB /* PMPlanetProgram.m in Sources */,
+				3DC71A471D87316A0078CACB /* YYSpriteSheetImage.m in Sources */,
+				3DC71A291D8730520078CACB /* PMTile.m in Sources */,
+				3DC71A2F1D8730520078CACB /* PMPlanetDimmerProgram.m in Sources */,
+				3DC71A431D87316A0078CACB /* YYAnimatedImageView.m in Sources */,
+				3DC71A2B1D8730520078CACB /* PMTileTools.m in Sources */,
+				3DC71A2E1D8730520078CACB /* PMPlanetaryViewProgram.m in Sources */,
+				3DC719DF1D8730300078CACB /* AppDelegate.m in Sources */,
+				3DC71A311D8730520078CACB /* PMPolygonProgram.m in Sources */,
+				3DC71A331D8730520078CACB /* PMQuadProgram.m in Sources */,
+				3DC719BC1D872F9A0078CACB /* main.m in Sources */,
+				3DC719E01D8730300078CACB /* PMViewController.m in Sources */,
+				3DC71A251D8730520078CACB /* PMMarker.m in Sources */,
+				3DC71A321D8730520078CACB /* PMProgram.m in Sources */,
+				3DC71A441D87316A0078CACB /* YYFrameImage.m in Sources */,
+				3DC71A2A1D8730520078CACB /* PMTileManager.m in Sources */,
+				3DC71A241D8730520078CACB /* PMCartography.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3DC719C81D872F9B0078CACB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DC719C91D872F9B0078CACB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3DC71A351D8730C50078CACB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DC71A361D8730C50078CACB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3DC719CC1D872F9B0078CACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3DC719CD1D872F9B0078CACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3DC719CF1D872F9B0078CACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PlanetaryMapsNoPods/Vendor",
+				);
+				INFOPLIST_FILE = PlanetaryMapsNoPods/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.unitedgalactic.PlanetaryMapsNoPods;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3DC719D01D872F9B0078CACB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PlanetaryMapsNoPods/Vendor",
+				);
+				INFOPLIST_FILE = PlanetaryMapsNoPods/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.unitedgalactic.PlanetaryMapsNoPods;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3DC719B21D872F9A0078CACB /* Build configuration list for PBXProject "PlanetaryMapsNoPods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DC719CC1D872F9B0078CACB /* Debug */,
+				3DC719CD1D872F9B0078CACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DC719CE1D872F9B0078CACB /* Build configuration list for PBXNativeTarget "PlanetaryMapsNoPods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DC719CF1D872F9B0078CACB /* Debug */,
+				3DC719D01D872F9B0078CACB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3DC719AF1D872F9A0078CACB /* Project object */;
+}
