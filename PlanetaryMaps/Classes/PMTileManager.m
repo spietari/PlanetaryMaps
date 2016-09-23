@@ -244,8 +244,9 @@
         return;
     }
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
+
         __block UIImage *image;
         if ([self.tileDataSource respondsToSelector:@selector(planetaryView:imageFromData:forTileLayer:)])
         {
@@ -256,7 +257,7 @@
             image = [UIImage imageWithData:data];
         }
             
-        dispatch_async(dispatch_get_main_queue(), ^{
+        //dispatch_async(dispatch_get_main_queue(), ^{
             if ([self.tileDelegate respondsToSelector:@selector(planetaryView:segmentsPerSideForTileLayer:)])
             {
                 tile.segmentsPerSide = [self.tileDelegate planetaryView:self.planetaryView segmentsPerSideForTileLayer:tile.layer];
@@ -268,7 +269,7 @@
             {
                 [self.tileCache removeObjectAtIndex:i];
             }
-        });
+        //});
     });
 }
 
