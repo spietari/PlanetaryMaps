@@ -1,8 +1,11 @@
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+
+#import "PMColorProgram.h"
 
 @interface PMAnimatedLine : NSObject
 
--(instancetype)initWithScreenPoints:(NSArray*)points;
--(void)renderFrame:(NSInteger)frame toContext:(CGContextRef)context withScreenSize:(CGSize)screenSize;
+-(instancetype)initWithLocations:(NSArray*)locations andPlanetSizeMultiplier:(CGFloat)planetSizeMultiplier andProgram:(PMColorProgram*)program andVertexArray:(GLuint)vertexArray withSpeed:(CGFloat)speed;
+-(BOOL)renderWithCoordinate:(CLLocationCoordinate2D)coordinate distance:(CGFloat)distance viewSize:(CGSize)viewSize andScale:(CGFloat)scale;
 
 @end

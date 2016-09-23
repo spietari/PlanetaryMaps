@@ -215,7 +215,7 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
     // MARK: Animated Lines Data Source
     
     func numberOfAnimatedLines(in view: PMPlanetaryView!) -> Int {
-        return 5000
+        return 2000
     }
     
     func animatedLineImage(for view: PMPlanetaryView!) -> UIImage! {
@@ -223,5 +223,25 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
     }
     
     // MARK: Animated Lines Delegate
+    
+    func planetaryView(_ view: PMPlanetaryView!, colorForAnimatedLinesInSet set: Int) -> UIColor! {
+        return UIColor.lightGray.withAlphaComponent(0.8)
+    }
+    
+    func planetaryView(_ view: PMPlanetaryView!, scaleForAnimatedLinesInSet set: Int) -> CGFloat {
+        return 3
+    }
+    
+    func planetaryView(_ view: PMPlanetaryView!, speedForAnimatedLinesInSet set: Int) -> CGFloat {
+        return 0.2
+    }
+    
+    func planetaryView(_ view: PMPlanetaryView!, segmentsForAnimatedLinesInSet set: Int) -> Int {
+        return 40
+    }
+    
+    func planetaryView(_ view: PMPlanetaryView!, lengthForAnimatedLinesInSet set: Int) -> CGFloat {
+        return 0.4
+    }
 }
 

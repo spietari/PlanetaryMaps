@@ -21,7 +21,11 @@
 @protocol PMAnimatedLinesDelegate;
 
 @interface PMPlanetaryView : GLKView
-
+{
+    // TODO Move back to .m
+    @public
+    GLuint _vertexArray;
+}
 @property (nonatomic, weak) id<PMPlanetaryViewDelegate> planetaryViewDelegate;
 
 @property (nonatomic, weak) id<PMTileDataSource> tileDataSource;
@@ -66,6 +70,8 @@
 @property (nonatomic, assign) NSInteger cacheSize;
 @property (nonatomic, assign) NSInteger maxTiles;
 @property (nonatomic, assign) NSInteger maxTilesInDownloadQueue;
+
+@property (nonatomic, assign) CGFloat planetSizeMultiplier;
 
 -(void)didReceiveMemoryWarning;
 
@@ -135,5 +141,12 @@
 @end
 
 @protocol PMAnimatedLinesDelegate <NSObject>
+@optional
+
+-(CGFloat)planetaryView:(PMPlanetaryView*)view scaleForAnimatedLinesInSet:(NSInteger)set;
+-(UIColor*)planetaryView:(PMPlanetaryView*)view colorForAnimatedLinesInSet:(NSInteger)set;
+-(CGFloat)planetaryView:(PMPlanetaryView*)view lengthForAnimatedLinesInSet:(NSInteger)set;
+-(CGFloat)planetaryView:(PMPlanetaryView*)view speedForAnimatedLinesInSet:(NSInteger)set;
+-(NSInteger)planetaryView:(PMPlanetaryView*)view segmentsForAnimatedLinesInSet:(NSInteger)set;
 
 @end
