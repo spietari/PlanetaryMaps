@@ -64,6 +64,8 @@
 -(CLLocationCoordinate2D)coordinateForScreenPoint:(CGPoint)point error:(BOOL*)error;
 
 -(void)reloadMarkers;
+-(void)reloadTiles;
+-(void)reloadAnimatedLines;
 
 -(CGPoint)screenPointForCoordinate:(CLLocationCoordinate2D)coordinate behind:(BOOL*)behind;
 
@@ -148,5 +150,6 @@
 -(CGFloat)planetaryView:(PMPlanetaryView*)view lengthForAnimatedLinesInSet:(NSInteger)set;
 -(CGFloat)planetaryView:(PMPlanetaryView*)view speedForAnimatedLinesInSet:(NSInteger)set;
 -(NSInteger)planetaryView:(PMPlanetaryView*)view segmentsForAnimatedLinesInSet:(NSInteger)set;
+-(CGFloat)planetaryView:(PMPlanetaryView*)view dimmerForAnimatedLinesInSet:(NSInteger)set;
 
 @end

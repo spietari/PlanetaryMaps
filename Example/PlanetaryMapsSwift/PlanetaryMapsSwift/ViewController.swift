@@ -16,6 +16,12 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
 
     // This is to fool Xcode to display FPS debug gauge.
     private var context: EAGLContext?
+    @IBOutlet weak var numberSlider: UISlider!
+    @IBOutlet weak var scaleSlider: UISlider!
+    @IBOutlet weak var lengthSlider: UISlider!
+    @IBOutlet weak var speedSlider: UISlider!
+    @IBOutlet weak var dimmerSlider: UISlider!
+    @IBOutlet weak var overlaySwitch: UISwitch!
     
     @IBOutlet var planetaryView: PMPlanetaryView!
     
@@ -57,7 +63,7 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
     // MARK: Tile Data Source
     
     func numberOfTileLayers(in view: PMPlanetaryView!) -> UInt {
-        return 2
+        return 1 + (overlaySwitch.isOn ? 1 : 0)
     }
     
     public func planetaryView(_ view: PMPlanetaryView!, urlForTileLayer layer: UInt, withZoom zoom: UInt, atX x: UInt, andY y: UInt) -> URL! {
@@ -215,7 +221,8 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
     // MARK: Animated Lines Data Source
     
     func numberOfAnimatedLines(in view: PMPlanetaryView!) -> Int {
-        return 2000
+        return Int(numberSlider.value)
+        //return 3000
     }
     
     func animatedLineImage(for view: PMPlanetaryView!) -> UIImage! {
@@ -225,23 +232,38 @@ class ViewController: UIViewController, PMTileDataSource, PMTileDelegate, PMMark
     // MARK: Animated Lines Delegate
     
     func planetaryView(_ view: PMPlanetaryView!, colorForAnimatedLinesInSet set: Int) -> UIColor! {
-        return UIColor.lightGray.withAlphaComponent(0.8)
+        return UIColor.white.withAlphaComponent(0.8)
     }
     
     func planetaryView(_ view: PMPlanetaryView!, scaleForAnimatedLinesInSet set: Int) -> CGFloat {
-        return 3
+        return CGFloat(scaleSlider.value)
+        //return 3
     }
     
     func planetaryView(_ view: PMPlanetaryView!, speedForAnimatedLinesInSet set: Int) -> CGFloat {
-        return 0.2
+        return CGFloat(speedSlider.value)
+        //return 0.4
     }
     
     func planetaryView(_ view: PMPlanetaryView!, segmentsForAnimatedLinesInSet set: Int) -> Int {
-        return 40
+        return 200
     }
     
     func planetaryView(_ view: PMPlanetaryView!, lengthForAnimatedLinesInSet set: Int) -> CGFloat {
-        return 0.4
+        return CGFloat(lengthSlider.value)
+        //return 4.0
+    }
+    
+    func planetaryView(_ view: PMPlanetaryView!, dimmerForAnimatedLinesInSet set: Int) -> CGFloat {
+        return CGFloat(dimmerSlider.value)
+    }
+    
+    @IBAction func numberChanged(_ sender: AnyObject) {
+        planetaryView.reloadAnimatedLines()
+    }
+
+    @IBAction func overlayChanged(_ sender: AnyObject) {
+        planetaryView.reloadTiles()
     }
 }
 

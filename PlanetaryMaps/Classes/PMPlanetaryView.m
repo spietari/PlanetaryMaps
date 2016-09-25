@@ -1179,5 +1179,15 @@ GLfloat gPlaneVertexData[30] =
     return NO;
 }
 
+-(void)reloadTiles
+{
+    self.lastZoom = 0;
+    [[PMTileManager sharedManager] clearTiles];
+}
+
+-(void)reloadAnimatedLines
+{
+    [[PMAnimatedLinesManager sharedManager]reload];
+}
 
 @end

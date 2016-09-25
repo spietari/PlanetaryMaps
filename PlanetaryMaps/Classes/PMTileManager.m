@@ -385,7 +385,7 @@
 
 -(void)clearTiles
 {
-//    [self.tiles removeAllObjects];
+    [self.tiles removeAllObjects];
     [self.tileCache removeAllObjects];
 }
 

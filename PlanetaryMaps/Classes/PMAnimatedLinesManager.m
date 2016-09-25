@@ -67,10 +67,12 @@
 {
     if (!self.dataSource) return;
     
-    self.animatedLineProgram = [[PMColorProgram alloc]initWithName:@"AnimatedLineShader"];
-    self.hudProgram = [[PMPlanetaryViewProgram alloc]initWithName:@"HUDShader"];
-    
-    [self makeParticle];
+    if (!animatedLinesDataImage)
+    {
+        self.animatedLineProgram = [[PMColorProgram alloc]initWithName:@"AnimatedLineShader"];
+        self.hudProgram = [[PMPlanetaryViewProgram alloc]initWithName:@"HUDShader"];
+        [self makeParticle];
+    }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         
@@ -84,30 +86,33 @@
                 return;
             }
             
-            UIImage* dataImage = [self.dataSource animatedLineImageForPlanetaryView:self];
-            
-            NSInteger dataWidth = dataImage.size.width;
-            NSInteger dataHeight = dataImage.size.height;
-            
-            UIGraphicsBeginImageContext(dataImage.size);
-            CGContextRef context = UIGraphicsGetCurrentContext();
-            
-            CGContextScaleCTM(context, 1, -1);
-            CGContextTranslateCTM(context, 0, -dataImage.size.height);
-            CGContextDrawImage(context, CGRectMake(0, 0, dataWidth, dataHeight), dataImage.CGImage);
-            
-            animatedLinesDataImage = calloc(dataImage.size.width * dataImage.size.height, 4 * sizeof(UInt8));
-            
-            UInt8 *data = (UInt8*)CGBitmapContextGetData(context);
-            memcpy(animatedLinesDataImage, data, 4 * dataImage.size.width * dataImage.size.height * sizeof(UInt8));
-            
-            animatedLinesDataImageSize = dataImage.size;
-            
-            UIGraphicsEndImageContext();
-            
-            dispatch_barrier_async(self.animatedLinesQueue, ^{
-                _animatedLines = [[NSMutableArray alloc]init];
-            });
+            if (!animatedLinesDataImage)
+            {
+                UIImage* dataImage = [self.dataSource animatedLineImageForPlanetaryView:self];
+                
+                NSInteger dataWidth = dataImage.size.width;
+                NSInteger dataHeight = dataImage.size.height;
+                
+                UIGraphicsBeginImageContext(dataImage.size);
+                CGContextRef context = UIGraphicsGetCurrentContext();
+                
+                CGContextScaleCTM(context, 1, -1);
+                CGContextTranslateCTM(context, 0, -dataImage.size.height);
+                CGContextDrawImage(context, CGRectMake(0, 0, dataWidth, dataHeight), dataImage.CGImage);
+                
+                animatedLinesDataImage = calloc(dataImage.size.width * dataImage.size.height, 4 * sizeof(UInt8));
+                
+                UInt8 *data = (UInt8*)CGBitmapContextGetData(context);
+                memcpy(animatedLinesDataImage, data, 4 * dataImage.size.width * dataImage.size.height * sizeof(UInt8));
+                
+                animatedLinesDataImageSize = dataImage.size;
+                
+                UIGraphicsEndImageContext();
+                
+                dispatch_barrier_async(self.animatedLinesQueue, ^{
+                    _animatedLines = [[NSMutableArray alloc]init];
+                });
+            }
         }
     });
 }
@@ -128,12 +133,6 @@
             if ([self.delegate respondsToSelector:@selector(planetaryView:segmentsForAnimatedLinesInSet:)])
             {
                 segments = [self.delegate planetaryView:self.planetaryView segmentsForAnimatedLinesInSet:0];
-            }
-            
-            CGFloat animationSpeed = 1.0;
-            if ([self.delegate respondsToSelector:@selector(planetaryView:speedForAnimatedLinesInSet:)])
-            {
-                animationSpeed = [self.delegate planetaryView:self.planetaryView speedForAnimatedLinesInSet:0];
             }
             
             CGFloat length = 1;
@@ -158,9 +157,9 @@
                 NSInteger dataHeight = (NSInteger)animatedLinesDataImageSize.height;
                 
                 NSMutableArray* locations = [[NSMutableArray alloc]init];
-                CGFloat speed, heading;
+                CGFloat maxSpeed = 0, speed, heading;
                 
-                for (NSInteger j = 0; j < 100; j++)
+                for (NSInteger j = 0; j < segments; j++)
                 {
                     [locations addObject:@[@(coordinate.latitude), @(coordinate.longitude)]];
                     
@@ -171,6 +170,9 @@
                     CGFloat v = animatedLinesDataImage[4 * (y * dataWidth + x) + 2] - 127;
                     
                     speed = sqrtf(u * u + v * v);
+                    if (speed > 40) speed = 40;
+                    if (speed > maxSpeed) maxSpeed = speed;
+                    
                     heading = atan2(v, u);
                     
                     CGFloat delta = length * speed * 100000 * sqrt(self.planetaryView.distance) / segments;
@@ -188,9 +190,14 @@
                                                                 andPlanetSizeMultiplier:self.planetaryView.planetSizeMultiplier
                                                                              andProgram:self.animatedLineProgram
                                                                          andVertexArray:self->_vertexArray
-                                                                              withSpeed:animationSpeed];
+                                                                              andLength:length];
+                animatedLine.maxSpeed = maxSpeed;
+                
                 dispatch_barrier_async(self.animatedLinesQueue, ^{
-                    [self.animatedLines addObject:animatedLine];
+                    if (maxSpeed > 5)
+                    {
+                        [self.animatedLines addObject:animatedLine];
+                    }
                 });
             }
             [NSThread sleepForTimeInterval:0.1];
@@ -219,8 +226,9 @@
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, self.planetaryView.bounds.size.width, self.planetaryView.bounds.size.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    
+        CGFloat screenScale = [UIScreen mainScreen].scale;
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, screenScale * self.planetaryView.bounds.size.width, screenScale * self.planetaryView.bounds.size.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
         
         glBindFramebuffer(GL_FRAMEBUFFER, animatedLinesFrameBuffer);
         
@@ -247,7 +255,8 @@
         GLint old_viewport[4];
         glGetIntegerv(GL_VIEWPORT, old_viewport);
         
-        glViewport(0, 0, self.planetaryView.bounds.size.width, self.planetaryView.bounds.size.height);
+        CGFloat screenScale = [UIScreen mainScreen].scale;
+        glViewport(0, 0, screenScale * self.planetaryView.bounds.size.width, screenScale * self.planetaryView.bounds.size.height);
         
         NSMutableArray *toBeRemoved = [[NSMutableArray alloc]init];
         
@@ -257,24 +266,37 @@
             scale = [self.delegate planetaryView:self.planetaryView scaleForAnimatedLinesInSet:0];
         }
         
+        GLKVector4 colorVector;
         if ([self.delegate respondsToSelector:@selector(planetaryView:colorForAnimatedLinesInSet:)])
         {
             UIColor *color = [self.delegate planetaryView:self.planetaryView colorForAnimatedLinesInSet:0];
             CGFloat red, green, blue, alpha;
             [color getRed:&red green:&green blue:&blue alpha:&alpha];
-            self.animatedLineProgram.color.value = GLKVector4Make(red, green, blue, alpha);
+            colorVector = GLKVector4Make(red, green, blue, alpha);
         }
         else
         {
-            self.animatedLineProgram.color.value = GLKVector4Make(1, 1, 1, 1);
+            colorVector = GLKVector4Make(1, 1, 1, 1);
+        }
+        
+        CGFloat animationSpeed = 1.0;
+        if ([self.delegate respondsToSelector:@selector(planetaryView:speedForAnimatedLinesInSet:)])
+        {
+            animationSpeed = [self.delegate planetaryView:self.planetaryView speedForAnimatedLinesInSet:0];
         }
         
         for (PMAnimatedLine* animatedLine in self.animatedLines)
         {
+            float f = (animatedLine.maxSpeed - 5) / 35;
+            if (f > 1) f = 1;
+            
+            self.animatedLineProgram.color.value = GLKVector4Make(colorVector.x, (1 - f) * colorVector.y, (1 - f) * colorVector.z, colorVector.w);//0.5 + 0.5 * colorVector.w * f);
+            
             BOOL alive = [animatedLine renderWithCoordinate:self.planetaryView.eye
                                                    distance:self.planetaryView.distance
                                                    viewSize:self.planetaryView.bounds.size
-                                                   andScale:scale];
+                                                   andScale:scale
+                                                   andSpeed:animationSpeed];
             if (!alive)
             {
                 [toBeRemoved addObject:animatedLine];
@@ -312,7 +334,13 @@
 {
     GLKMatrix4 modelViewProjectionMatrix = GLKMatrix4MakeOrtho(-0.5, 0.5, 0.5, -0.5, -1.0, 0.0);
     self.animatedLineProgram.modelViewMatrix.value = modelViewProjectionMatrix;
-    self.animatedLineProgram.color.value = GLKVector4Make(0, 0, 0, 0.9);
+    
+    CGFloat dimmer = 0.95;
+    if ([self.delegate respondsToSelector:@selector(planetaryView:dimmerForAnimatedLinesInSet:)])
+    {
+        dimmer = [self.delegate planetaryView:self.planetaryView dimmerForAnimatedLinesInSet:0];
+    }
+    self.animatedLineProgram.color.value = GLKVector4Make(0, 0, 0, dimmer);
     [self.animatedLineProgram use];
     glEnable(GL_BLEND);
     glBlendFuncSeparate(GL_ZERO, GL_ONE, GL_DST_ALPHA, GL_ZERO);
