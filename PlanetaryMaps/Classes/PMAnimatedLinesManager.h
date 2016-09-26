@@ -6,8 +6,6 @@
 
 @interface PMAnimatedLinesManager : NSObject
 
-+ (PMAnimatedLinesManager *) sharedManager;
-
 @property (nonatomic, weak) id<PMAnimatedLinesDataSource> dataSource;
 @property (nonatomic, weak) id<PMAnimatedLinesDelegate> delegate;
 @property (nonatomic, weak) PMPlanetaryView *planetaryView;

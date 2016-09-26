@@ -21,6 +21,8 @@
     
     GLuint _vertexArray;
     GLuint _vertexBuffer;
+    
+    BOOL threadRunning, stopThread;
 }
 
 @property (nonatomic, strong) PMColorProgram *animatedLineProgram;
@@ -34,26 +36,13 @@
 
 @implementation PMAnimatedLinesManager
 
-+ (PMAnimatedLinesManager *) sharedManager
-{
-    static PMAnimatedLinesManager *_sharedInstance = nil;
-    @synchronized (self)
-    {
-        if (_sharedInstance == nil)
-        {
-            _sharedInstance = [[self alloc] init];
-        }
-    }
-    return _sharedInstance;
-}
-
 - (instancetype)init
 {
     self = [super init];
     if (self)
     {
-        [self startAnimatedLinesEmitter];
-        self.animatedLinesQueue = dispatch_queue_create("PlanetaryMapsAnimatedLines", DISPATCH_QUEUE_CONCURRENT);
+        threadRunning = NO;
+        stopThread = NO;
     }
     return self;
 }
@@ -61,6 +50,10 @@
 -(void)dealloc
 {
     free(animatedLinesDataImage);
+    if (threadRunning)
+    {
+        stopThread = YES;
+    }
 }
 
 -(void)reload
@@ -79,6 +72,7 @@
         if ([self.dataSource respondsToSelector:@selector(numberOfAnimatedLinesInPlanetaryView:)] &&
             [self.dataSource respondsToSelector:@selector(animatedLineImageForPlanetaryView:)])
         {
+            
             self.maxAnimatedLines = [self.dataSource numberOfAnimatedLinesInPlanetaryView: self];
             if (self.maxAnimatedLines == 0)
             {
@@ -86,6 +80,14 @@
                 return;
             }
             
+            if (!threadRunning)
+            {
+                threadRunning = YES;
+                [self startAnimatedLinesEmitter];
+                self.animatedLinesQueue = dispatch_queue_create("PlanetaryMapsAnimatedLines", DISPATCH_QUEUE_CONCURRENT);
+            }
+            
+            // TODO Reload data as well when reloading
             if (!animatedLinesDataImage)
             {
                 UIImage* dataImage = [self.dataSource animatedLineImageForPlanetaryView:self];
@@ -120,9 +122,7 @@
 -(void)startAnimatedLinesEmitter
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        
-        // TODO
-        while (true)
+        while (!stopThread)
         {
             if (!self.animatedLines)
             {
@@ -186,11 +186,7 @@
                     }
                 }
                 [locations addObject:@[@(coordinate.latitude), @(coordinate.longitude)]];
-                PMAnimatedLine* animatedLine = [[PMAnimatedLine alloc]initWithLocations:locations
-                                                                andPlanetSizeMultiplier:self.planetaryView.planetSizeMultiplier
-                                                                             andProgram:self.animatedLineProgram
-                                                                         andVertexArray:self->_vertexArray
-                                                                              andLength:length];
+                PMAnimatedLine* animatedLine = [[PMAnimatedLine alloc]initWithLocations:locations andLength:length];
                 animatedLine.maxSpeed = maxSpeed;
                 
                 dispatch_barrier_async(self.animatedLinesQueue, ^{
@@ -218,32 +214,36 @@
 {
     if (!animatedLinesFrameBuffer)
     {
+        CGFloat screenScale = [UIScreen mainScreen].scale;
+        CGSize texSize = CGSizeMake(screenScale * self.planetaryView.bounds.size.width, screenScale * self.planetaryView.bounds.size.height);
+        
         glGenFramebuffers(1, &animatedLinesFrameBuffer);
         glGenTextures(1, &animatedLinesRenderToTexture);
-        
-        glBindTexture(GL_TEXTURE_2D, animatedLinesRenderToTexture);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    
-        CGFloat screenScale = [UIScreen mainScreen].scale;
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, screenScale * self.planetaryView.bounds.size.width, screenScale * self.planetaryView.bounds.size.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-        
         glBindFramebuffer(GL_FRAMEBUFFER, animatedLinesFrameBuffer);
         
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, animatedLinesRenderToTexture, 0);
+        GLuint colorRenderbuffer;
+        glGenRenderbuffers(1, &colorRenderbuffer);
+        glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_RGBA, texSize.width, texSize.height);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, colorRenderbuffer);
         
-        glBindFramebuffer(GL_FRAMEBUFFER, animatedLinesFrameBuffer);
+        GLuint depthRenderbuffer;
+        glGenRenderbuffers(1, &depthRenderbuffer);
+        glBindRenderbuffer(GL_RENDERBUFFER, depthRenderbuffer);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, texSize.width, texSize.height);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthRenderbuffer);
         
         GLenum status=glCheckFramebufferStatus(GL_FRAMEBUFFER);
         if (status != GL_FRAMEBUFFER_COMPLETE)
         {
             NSLog(@"Framebuffer is not complete");
         }
-        
-        glBindTexture(GL_TEXTURE_2D, 0);
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+        glGenTextures(1, &animatedLinesRenderToTexture);
+        glBindTexture(GL_TEXTURE_2D, animatedLinesRenderToTexture);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, screenScale * self.planetaryView.bounds.size.width, screenScale * self.planetaryView.bounds.size.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, animatedLinesRenderToTexture, 0);
     }
     
     dispatch_barrier_sync(self.animatedLinesQueue, ^{
@@ -252,13 +252,14 @@
         glGetIntegerv(GL_FRAMEBUFFER_BINDING, &old_fbo);
         glBindFramebuffer(GL_FRAMEBUFFER, animatedLinesFrameBuffer);
         
+        const GLenum discards[] = {GL_DEPTH_ATTACHMENT};
+        glDiscardFramebufferEXT(GL_FRAMEBUFFER, 1, discards);
+        
         GLint old_viewport[4];
         glGetIntegerv(GL_VIEWPORT, old_viewport);
         
         CGFloat screenScale = [UIScreen mainScreen].scale;
         glViewport(0, 0, screenScale * self.planetaryView.bounds.size.width, screenScale * self.planetaryView.bounds.size.height);
-        
-        NSMutableArray *toBeRemoved = [[NSMutableArray alloc]init];
         
         CGFloat scale = 1;
         if ([self.delegate respondsToSelector:@selector(planetaryView:scaleForAnimatedLinesInSet:)])
@@ -285,25 +286,43 @@
             animationSpeed = [self.delegate planetaryView:self.planetaryView speedForAnimatedLinesInSet:0];
         }
         
+        glDisable(GL_DEPTH_TEST);
+        glEnable(GL_CULL_FACE);
+        glEnable(GL_BLEND);
+        
+        GLKMatrix4 lineMVP = GLKMatrix4MakeOrtho(0, self.planetaryView.bounds.size.width, 0, self.planetaryView.bounds.size.height, -1000 / self.planetaryView.distance, 1000 / self.planetaryView.distance);
+        lineMVP = GLKMatrix4Translate(lineMVP, self.planetaryView.bounds.size.width / 2, self.planetaryView.bounds.size.height / 2, 0);
+        lineMVP = GLKMatrix4Multiply(lineMVP, GLKMatrix4Multiply(GLKMatrix4MakeRotation(RADIANS(-self.planetaryView.eye.latitude), 1, 0, 0), GLKMatrix4MakeRotation(RADIANS(-self.planetaryView.eye.longitude), 0, 1, 0)));
+        
+        // TODO What 82?
+        GLKMatrix4 lineMVP2 = GLKMatrix4MakeTranslation(0, 0, self.planetaryView.planetSizeMultiplier * 82 / self.planetaryView.distance);
+        lineMVP2 = GLKMatrix4Scale(lineMVP2, scale / 2, scale / 2, 1);
+        
+        [self.animatedLineProgram use];
+        glBindVertexArrayOES(_vertexArray);
+        
+        NSMutableArray *toBeRemoved = [[NSMutableArray alloc]init];
         for (PMAnimatedLine* animatedLine in self.animatedLines)
         {
-            float f = (animatedLine.maxSpeed - 5) / 35;
-            if (f > 1) f = 1;
-            
-            self.animatedLineProgram.color.value = GLKVector4Make(colorVector.x, (1 - f) * colorVector.y, (1 - f) * colorVector.z, colorVector.w);//0.5 + 0.5 * colorVector.w * f);
-            
+            self.animatedLineProgram.color.value = colorVector;
             BOOL alive = [animatedLine renderWithCoordinate:self.planetaryView.eye
                                                    distance:self.planetaryView.distance
-                                                   viewSize:self.planetaryView.bounds.size
-                                                   andScale:scale
-                                                   andSpeed:animationSpeed];
+                                                   andSpeed:animationSpeed
+                                              andMVPMatrix1:lineMVP
+                                              andMVPMatrix2:lineMVP2
+                                                 andProgram:self.animatedLineProgram];
             if (!alive)
             {
                 [toBeRemoved addObject:animatedLine];
             }
         }
-        
         [self.animatedLines removeObjectsInArray:toBeRemoved];
+        
+        glBindVertexArrayOES(0);
+        
+        glEnable(GL_DEPTH_TEST);
+        glDisable(GL_CULL_FACE);
+        glEnable(GL_BLEND);
         
         [self renderDimmer];
         

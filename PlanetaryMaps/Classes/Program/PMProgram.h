@@ -13,6 +13,7 @@
 -(id)initWithName:(NSString*)shaderFilename;
 
 -(void)loadUniforms;
+-(void)bindUniforms;
 -(void)use;
 
 @property (nonatomic, strong) NSMutableArray *uniforms;

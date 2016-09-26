@@ -61,6 +61,8 @@ GLfloat gPlaneVertexData[30] =
 @property (nonatomic, strong) PMPlanetProgram *planetProgram;
 @property (nonatomic, strong) PMPlanetDimmerProgram *planetDimmerProgram;
 
+@property (nonatomic, strong) PMAnimatedLinesManager *animatedLinesManager;
+
 @end
 
 @implementation PMPlanetaryView
@@ -96,7 +98,9 @@ GLfloat gPlaneVertexData[30] =
         self.linesOnTop = NO;
         
         [PMTileManager sharedManager].planetaryView = self;
-        [PMAnimatedLinesManager sharedManager].planetaryView = self;
+        
+        self.animatedLinesManager = [[PMAnimatedLinesManager alloc]init];
+        self.animatedLinesManager.planetaryView = self;
         
         self.link = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
         self.link.frameInterval = 1;
@@ -140,13 +144,13 @@ GLfloat gPlaneVertexData[30] =
 -(void)setAnimatedLinesDataSource:(id<PMAnimatedLinesDataSource>)animatedLinesDataSource
 {
     _animatedLinesDataSource = animatedLinesDataSource;
-    [PMAnimatedLinesManager sharedManager].dataSource = animatedLinesDataSource;
+    self.animatedLinesManager.dataSource = animatedLinesDataSource;
 }
 
 -(void)setAnimatedLinesDelegate:(id<PMAnimatedLinesDelegate>)animatedLinesDelegate
 {
     _animatedLinesDelegate = animatedLinesDelegate;
-    [PMAnimatedLinesManager sharedManager].delegate = animatedLinesDelegate;
+    self.animatedLinesManager.delegate = animatedLinesDelegate;
 }
 
 -(void)setPlanetaryViewDelegate:(id<PMPlanetaryViewDelegate>)planetaryViewDelegate
@@ -163,7 +167,7 @@ GLfloat gPlaneVertexData[30] =
         [self setupGL];
         [self reloadPolygons];
         [self reloadMarkers];
-        [[PMAnimatedLinesManager sharedManager] reload];
+        [self.animatedLinesManager reload];
         self.distance = _distance;
     }
     
@@ -176,7 +180,7 @@ GLfloat gPlaneVertexData[30] =
     
     if (_panVelocity.x * _panVelocity.x + _panVelocity.y * _panVelocity.y > 0.01)
     {
-        [[PMAnimatedLinesManager sharedManager] clear];
+        [self.animatedLinesManager clear];
     }
     
     if (!self.blockTileUpdate)
@@ -429,7 +433,7 @@ GLfloat gPlaneVertexData[30] =
             
         case UIGestureRecognizerStateChanged:
         {
-            [[PMAnimatedLinesManager sharedManager] clear];
+            [self.animatedLinesManager clear];
             
             CGPoint translation = [pan translationInView:self];
             [pan setTranslation:CGPointZero inView:self];
@@ -475,7 +479,7 @@ GLfloat gPlaneVertexData[30] =
             
         case UIGestureRecognizerStateChanged:
         {
-            [[PMAnimatedLinesManager sharedManager] clear];
+            [self.animatedLinesManager clear];
             
             CGPoint locationInView = [pinch locationInView:self];
             
@@ -495,7 +499,7 @@ GLfloat gPlaneVertexData[30] =
         case UIGestureRecognizerStateEnded:
             self.panVelocity = CGPointZero;
             self.blockTileUpdate = NO;
-            [[PMAnimatedLinesManager sharedManager] clear];
+            [self.animatedLinesManager clear];
             break;
             
         default:
@@ -532,6 +536,9 @@ GLfloat gPlaneVertexData[30] =
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 20, BUFFER_OFFSET(12));
     
     glBindVertexArrayOES(0);
+    
+    glFrontFace(GL_CCW);
+    glCullFace(GL_BACK);
 }
 
 - (void)tearDownGL
@@ -583,7 +590,7 @@ GLfloat gPlaneVertexData[30] =
         [self renderPlanet];
     }
 
-    [[PMAnimatedLinesManager sharedManager] render];
+    [self.animatedLinesManager render];
     
     [self renderPlanetDimmer];
 
@@ -1187,7 +1194,7 @@ GLfloat gPlaneVertexData[30] =
 
 -(void)reloadAnimatedLines
 {
-    [[PMAnimatedLinesManager sharedManager]reload];
+    [self.animatedLinesManager reload];
 }
 
 @end
